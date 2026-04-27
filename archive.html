@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>週報彙整 | Global Markets Weekly Recap</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f2f5f9; --surface: #fff; --border: #d0d6e2;
+  --text: #1a1f2e; --text-sub: #374151; --text-dim: #6b7280;
+  --green: #15803d; --red: #b91c1c; --warn: #b45309;
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'IBM Plex Sans', sans-serif;
+  --serif: 'Playfair Display', serif;
+}
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:var(--sans); font-size:16px; }
+
+.site-header {
+  background: linear-gradient(135deg,#fff 60%,#eef1f8);
+  border-bottom: 2px solid var(--border);
+  padding: 28px 48px 22px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.site-header h1 { font-family:var(--serif); font-size:26px; font-weight:900; }
+.site-header h1 span { color:var(--warn); }
+.site-header a { font-family:var(--mono); font-size:12px; color:var(--text-dim); text-decoration:none; }
+.site-header a:hover { color:var(--text); }
+
+.main { max-width: 860px; margin: 0 auto; padding: 36px 48px; }
+.section-title {
+  font-family: var(--mono); font-size: 11px; letter-spacing:.16em;
+  text-transform: uppercase; color:var(--text-dim);
+  margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+}
+.section-title::after { content:''; flex:1; height:1px; background:var(--border); }
+
+.year-group { margin-bottom: 36px; }
+.year-label {
+  font-family: var(--serif); font-size: 18px; font-weight: 700;
+  color: var(--text); margin-bottom: 12px;
+}
+
+.report-list { display: flex; flex-direction: column; gap: 10px; }
+.report-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+  display: flex; align-items: center; gap: 16px;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow .15s, border-color .15s;
+  box-shadow: 0 1px 3px rgba(0,0,0,.05);
+}
+.report-card:hover {
+  box-shadow: 0 4px 14px rgba(0,0,0,.1);
+  border-color: #a5b4cd;
+}
+.report-card.latest {
+  border-left: 4px solid var(--warn);
+  background: #fffdf8;
+}
+.latest-badge {
+  font-family:var(--mono); font-size:10px; font-weight:700;
+  background:#fef3c7; color:#92400e; border:1px solid #fcd34d;
+  border-radius:12px; padding:2px 8px; white-space:nowrap;
+}
+.api-badge {
+  font-family:var(--mono); font-size:10px; font-weight:700;
+  background:#dcfce7; color:#14532d; border:1px solid #86efac;
+  border-radius:12px; padding:2px 8px; white-space:nowrap;
+}
+.report-date {
+  font-family: var(--mono); font-size: 12px; font-weight: 700;
+  color: var(--text-dim); width: 130px; flex-shrink:0;
+}
+.report-title {
+  flex: 1; font-size: 15px; font-weight: 600; color: var(--text);
+}
+.report-subtitle {
+  font-size: 13px; color: var(--text-sub); margin-top: 2px;
+}
+.report-tags {
+  display: flex; gap: 6px; flex-wrap: wrap; align-items: center;
+}
+.tag {
+  font-family:var(--mono); font-size:10px; padding:2px 7px;
+  border-radius:10px; font-weight:600;
+}
+.tag-us   { background:#dcfce7; color:#14532d; }
+.tag-eu   { background:#ffedd5; color:#7c2d12; }
+.tag-asia { background:#dbeafe; color:#1e3a8a; }
+
+.report-arrow { color:var(--text-dim); font-size:18px; flex-shrink:0; }
+
+/* upcoming placeholder */
+.report-card.upcoming {
+  opacity:.5; pointer-events:none; border-style:dashed;
+}
+
+.footer {
+  border-top: 1px solid var(--border); padding:14px 48px;
+  font-family:var(--mono); font-size:11.5px; color:var(--text-dim);
+  text-align:center; background:#fff;
+}
+
+@media (max-width:600px){
+  .site-header { padding:18px 16px; flex-direction:column; align-items:flex-start; gap:8px; }
+  .main { padding:24px 16px; }
+  .report-card { flex-wrap:wrap; gap:10px; }
+  .report-date { width:auto; }
+  .report-arrow { display:none; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <h1>Global Markets <span>Weekly Recap</span></h1>
+  <a href="reports/2026-04-24.html">→ 最新週報</a>
+</header>
+
+<div class="main">
+
+  <div class="section-title">所有週報</div>
+
+  <div class="year-group">
+    <div class="year-label">2026</div>
+    <div class="report-list">
+
+      <!-- Latest -->
+      <a class="report-card latest" href="reports/2026-04-24.html">
+        <div class="report-date">Apr 20–24</div>
+        <div>
+          <div class="report-title">衝高後震盪，Nasdaq 創歷史新高</div>
+          <div class="report-subtitle">WTI 突破 $100、INTC +25.6%、GEV +16.1%、ServiceNow 重挫 -17.7%</div>
+        </div>
+        <div class="report-tags">
+          <span class="latest-badge">最新</span>
+          <span class="api-badge">✓ API</span>
+          <span class="tag tag-us">🇺🇸</span>
+          <span class="tag tag-eu">🇪🇺</span>
+          <span class="tag tag-asia">🌏</span>
+        </div>
+        <div class="report-arrow">›</div>
+      </a>
+
+      <!-- Upcoming placeholder -->
+      <div class="report-card upcoming">
+        <div class="report-date">Apr 27–May 1</div>
+        <div>
+          <div class="report-title">本週報告（尚未發布）</div>
+          <div class="report-subtitle">META、MSFT、GOOGL、AMZN、AAPL 財報週 + 非農就業報告</div>
+        </div>
+        <div class="report-tags">
+          <span class="tag tag-us">🇺🇸</span>
+          <span class="tag tag-eu">🇪🇺</span>
+          <span class="tag tag-asia">🌏</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Global Markets Weekly Recap · 本報告僅供資訊參考，不構成投資建議
+</div>
+
+</body>
+</html>
