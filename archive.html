@@ -95,11 +95,6 @@ body { background:var(--bg); color:var(--text); font-family:var(--sans); font-si
 
 .report-arrow { color:var(--text-dim); font-size:18px; flex-shrink:0; }
 
-/* upcoming placeholder */
-.report-card.upcoming {
-  opacity:.5; pointer-events:none; border-style:dashed;
-}
-
 .footer {
   border-top: 1px solid var(--border); padding:14px 48px;
   font-family:var(--mono); font-size:11.5px; color:var(--text-dim);
@@ -119,7 +114,7 @@ body { background:var(--bg); color:var(--text); font-family:var(--sans); font-si
 
 <header class="site-header">
   <h1>Global Markets <span>Weekly Recap</span></h1>
-  <a href="reports/2026-04-24.html">→ 最新週報</a>
+  <a href="reports/2026-05-15.html">→ 最新週報</a>
 </header>
 
 <div class="main">
@@ -131,11 +126,11 @@ body { background:var(--bg); color:var(--text); font-family:var(--sans); font-si
     <div class="report-list">
 
       <!-- Latest -->
-      <a class="report-card latest" href="reports/2026-05-01.html">
-        <div class="report-date">Apr 27–May 1</div>
+      <a class="report-card latest" href="reports/2026-05-15.html">
+        <div class="report-date">May 11–15</div>
         <div>
-          <div class="report-title">Mag 7 財報驅動分化，S&P 500 再創新高</div>
-          <div class="report-subtitle">GOOGL +10%、META -9%、FOMC 8-4 分裂</div>
+          <div class="report-title">川習峰會、CPI 3.8%、Warsh 就任、Cerebras IPO</div>
+          <div class="report-subtitle">WTI 破 $109、10Y 殖利率升至年高 4.54%、Cisco AI 爆發 +13%</div>
         </div>
         <div class="report-tags">
           <span class="latest-badge">最新</span>
@@ -146,6 +141,22 @@ body { background:var(--bg); color:var(--text); font-family:var(--sans); font-si
         </div>
         <div class="report-arrow">›</div>
       </a>
+
+      <a class="report-card" href="reports/2026-05-01.html">
+        <div class="report-date">Apr 27–May 1</div>
+        <div>
+          <div class="report-title">Mag 7 財報驅動分化，S&amp;P 500 再創新高</div>
+          <div class="report-subtitle">GOOGL +10%、META -9%、FOMC 8-4 分裂</div>
+        </div>
+        <div class="report-tags">
+          <span class="api-badge">✓ API</span>
+          <span class="tag tag-us">🇺🇸</span>
+          <span class="tag tag-eu">🇪🇺</span>
+          <span class="tag tag-asia">🌏</span>
+        </div>
+        <div class="report-arrow">›</div>
+      </a>
+
       <a class="report-card" href="reports/2026-04-24.html">
         <div class="report-date">Apr 20–24</div>
         <div>
@@ -160,20 +171,6 @@ body { background:var(--bg); color:var(--text); font-family:var(--sans); font-si
         </div>
         <div class="report-arrow">›</div>
       </a>
-
-      <!-- Upcoming placeholder -->
-      <div class="report-card upcoming">
-        <div class="report-date">Apr 27–May 1</div>
-        <div>
-          <div class="report-title">本週報告（尚未發布）</div>
-          <div class="report-subtitle">META、MSFT、GOOGL、AMZN、AAPL 財報週 + 非農就業報告</div>
-        </div>
-        <div class="report-tags">
-          <span class="tag tag-us">🇺🇸</span>
-          <span class="tag tag-eu">🇪🇺</span>
-          <span class="tag tag-asia">🌏</span>
-        </div>
-      </div>
 
     </div>
   </div>
