@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Weekly Market Recap | May 11 – 15, 2026</title>
+<style>
+  :root {
+    --bg: #f7f7f5;
+    --card: #ffffff;
+    --border: #e2e0da;
+    --text: #1a1a1a;
+    --text-sub: #4a4a4a;
+    --text-muted: #7a7a7a;
+    --green: #1a7a3c;
+    --red: #c0392b;
+    --accent: #1a3a5c;
+    --accent-light: #eef2f7;
+    --ticker-bg: #1a1a1a;
+    --ticker-text: #f0ede6;
+    --tag-us: #1a3a5c;
+    --tag-eu: #2d5016;
+    --tag-asia: #5c1a1a;
+    --section-border: #1a3a5c;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 17px;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  .nav-bar {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+  .nav-bar a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  .nav-bar a:hover { text-decoration: underline; }
+  .nav-week { font-weight: 700; font-size: 15px; color: var(--text); }
+
+  /* TICKER BAR */
+  .ticker-bar {
+    background: var(--ticker-bg);
+    color: var(--ticker-text);
+    padding: 10px 32px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    overflow: hidden;
+  }
+  .ticker-item { display: flex; gap: 7px; align-items: center; white-space: nowrap; }
+  .ticker-item .label { color: #a0a0a0; }
+  .ticker-item .val { color: #f0ede6; font-weight: 600; }
+  .ticker-item .chg.up { color: #52b788; }
+  .ticker-item .chg.dn { color: #e07070; }
+  .ticker-item .chg.flat { color: #a0a0a0; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #1a3a5c 60%, #2c5f8a 100%);
+    color: #f0ede6;
+    padding: 56px 64px 48px;
+  }
+  .hero-eyebrow {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #a8c4d8;
+    margin-bottom: 12px;
+  }
+  .hero h1 {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .hero h1 em { font-style: normal; color: #7ec8e3; }
+  .hero-sub {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    color: #a8c4d8;
+    margin-bottom: 32px;
+  }
+
+  /* HERO STATS ROW */
+  .hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 0;
+  }
+  .hero-stat {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px;
+    padding: 14px 20px;
+    min-width: 130px;
+  }
+  .hero-stat .name {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #a8c4d8;
+    margin-bottom: 4px;
+  }
+  .hero-stat .value { font-size: 21px; font-weight: 700; }
+  .hero-stat .badge {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .hero-stat .badge.up { color: #52b788; }
+  .hero-stat .badge.dn { color: #e07070; }
+  .hero-stat .badge.flat { color: #a8c4d8; }
+
+  /* MACRO BANNER */
+  .macro-banner {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    padding: 24px 64px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .macro-item {
+    flex: 1;
+    min-width: 200px;
+    border-left: 3px solid var(--section-border);
+    padding-left: 16px;
+  }
+  .macro-item .macro-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .macro-item .macro-val { font-size: 17px; font-weight: 700; color: var(--text); }
+  .macro-item .macro-desc { font-size: 13px; color: var(--text-sub); }
+
+  /* MAIN LAYOUT */
+  .main { max-width: 1100px; margin: 0 auto; padding: 40px 32px; }
+
+  /* SECTION HEADER */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 48px 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--section-border);
+  }
+  .section-flag { font-size: 26px; }
+  .section-title {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.5px;
+  }
+  .section-subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-style: italic;
+  }
+
+  /* RESULT BADGE */
+  .result-badge {
+    display: inline-block;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+  .result-badge.up { background: #f0f7f3; color: #1a7a3c; border: 1px solid #a8d5b8; }
+  .result-badge.dn { background: #fdf3f2; color: #c0392b; border: 1px solid #e8a09a; }
+  .result-badge.neutral { background: #f5f5f0; color: #555; border: 1px solid #ccc; }
+
+  /* CARD */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+  }
+  .card-title {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  /* INDEX TABLE */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 15px;
+  }
+  thead th {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+    padding: 6px 10px;
+    text-align: left;
+    background: #f9f9f7;
+  }
+  thead th:nth-child(2), thead th:nth-child(3), thead th:nth-child(4) { text-align: right; }
+  tbody td {
+    padding: 10px 10px;
+    border-bottom: 1px solid #f0ede6;
+    vertical-align: middle;
+  }
+  tbody td:nth-child(2), tbody td:nth-child(3), tbody td:nth-child(4) { text-align: right; font-weight: 600; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: #fafaf8; }
+  .chg-up { color: var(--green); }
+  .chg-dn { color: var(--red); }
+
+  /* SUBSECTION DIVIDER */
+  .sub-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    padding: 8px 10px 4px;
+    background: #f9f9f7;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* EVENT LIST */
+  .event-list { list-style: none; }
+  .event-list li {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.65;
+  }
+  .event-list li:last-child { border-bottom: none; }
+  .event-tag {
+    display: inline-block;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-right: 8px;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+  .tag-macro { background: #eef2f7; color: #1a3a5c; }
+  .tag-policy { background: #f0f7f3; color: #1a5c2d; }
+  .tag-geo { background: #fdf3f2; color: #7a1a10; }
+  .tag-corp { background: #f7f3ee; color: #5c3a1a; }
+  .tag-ipofin { background: #f5f0f7; color: #3a1a5c; }
+
+  /* EARNINGS TABLE */
+  .earnings-table { border-collapse: collapse; width: 100%; font-size: 15px; }
+  .earnings-table thead th {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    border-bottom: 2px solid var(--border);
+    padding: 8px 10px;
+    background: #f9f9f7;
+    text-align: left;
+  }
+  .earnings-table tbody td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #f0ede6;
+    vertical-align: top;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+  }
+  .earnings-table tbody tr:hover { background: #fafaf8; }
+  .earnings-table .ticker { font-weight: 800; font-size: 14px; letter-spacing: 0.5px; }
+  .earnings-table .company { font-size: 13px; color: var(--text-sub); }
+  .stock-reaction { font-weight: 700; font-size: 13px; }
+
+  /* DAILY REVIEW */
+  .daily-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .day-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+  }
+  .day-card .day-name {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .day-card .day-date {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .day-card p { font-size: 13px; line-height: 1.55; color: var(--text-sub); }
+
+  /* OUTLOOK */
+  .outlook-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 8px; }
+  .outlook-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--section-border);
+    border-radius: 8px;
+    padding: 20px;
+  }
+  .outlook-card.eu { border-top-color: #2d6a1a; }
+  .outlook-card.asia { border-top-color: #8b1a1a; }
+  .outlook-card h4 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+  .outlook-card ul { list-style: none; }
+  .outlook-card ul li {
+    font-size: 14px;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-sub);
+  }
+  .outlook-card ul li:last-child { border-bottom: none; }
+  .outlook-card ul li::before { content: "→ "; color: var(--accent); font-weight: 700; }
+
+  /* INSIGHT BOX */
+  .insight-box {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 18px 24px;
+    margin: 20px 0;
+  }
+  .insight-box h4 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .insight-box p { font-size: 15px; color: var(--text); }
+
+  /* FOOTER */
+  footer {
+    background: #1a1a1a;
+    color: #888;
+    padding: 28px 64px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    margin-top: 64px;
+  }
+  footer strong { color: #f0ede6; }
+
+  @media (max-width: 800px) {
+    .hero { padding: 32px 24px; }
+    .main { padding: 24px 16px; }
+    .macro-banner { padding: 16px 24px; }
+    .daily-grid { grid-template-columns: 1fr 1fr; }
+    .outlook-grid { grid-template-columns: 1fr; }
+    footer { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav-bar">
+  <a href="../reports/2026-05-01.html">◀ Apr 27 – May 1</a>
+  <span class="nav-week">May 11 – 15, 2026</span>
+  <a href="../archive.html">全部週報</a>
+</nav>
+
+<!-- TICKER BAR -->
+<div class="ticker-bar">
+  <div class="ticker-item"><span class="label">S&P 500</span><span class="val">7,408.5</span><span class="chg up">▲ +0.13%</span></div>
+  <div class="ticker-item"><span class="label">Nasdaq</span><span class="val">26,225</span><span class="chg dn">▼ −0.38%</span></div>
+  <div class="ticker-item"><span class="label">DJIA</span><span class="val">49,526</span><span class="chg dn">▼ −0.17%</span></div>
+  <div class="ticker-item"><span class="label">SOX</span><span class="val">11,588</span><span class="chg dn">▼ −1.59%</span></div>
+  <div class="ticker-item"><span class="label">STOXX 600</span><span class="val">606.92</span><span class="chg dn">▼ −0.85%</span></div>
+  <div class="ticker-item"><span class="label">DAX</span><span class="val">23,951</span><span class="chg dn">▼ −1.59%</span></div>
+  <div class="ticker-item"><span class="label">Nikkei 225</span><span class="val">61,409</span><span class="chg dn">▼ −2.08%</span></div>
+  <div class="ticker-item"><span class="label">TOPIX</span><span class="val">3,864</span><span class="chg up">▲ +0.90%</span></div>
+  <div class="ticker-item"><span class="label">TAIEX</span><span class="val">41,172</span><span class="chg dn">▼ −1.04%</span></div>
+  <div class="ticker-item"><span class="label">10Y UST</span><span class="val">4.54%</span><span class="chg dn">▲ 利率升</span></div>
+  <div class="ticker-item"><span class="label">WTI</span><span class="val">~$109</span><span class="chg dn">▲ 大漲</span></div>
+  <div class="ticker-item"><span class="label">VIX</span><span class="val">18.4</span><span class="chg dn">▲ 升</span></div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Global Markets Weekly Recap</div>
+  <h1>Week of <em>May 11 – 15</em>, 2026</h1>
+  <div class="hero-sub">資料截至 2026/05/15 收盤 ｜ 川習峰會 · CPI 3.8% · Warsh 就任 · Cerebras IPO · Cisco AI 爆發</div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="name">S&amp;P 500</div>
+      <div class="value">7,408.5</div>
+      <div class="badge up">▲ +0.13% 週</div>
+    </div>
+    <div class="hero-stat">
+      <div class="name">Nasdaq</div>
+      <div class="value">26,225</div>
+      <div class="badge dn">▼ −0.38% 週</div>
+    </div>
+    <div class="hero-stat">
+      <div class="name">STOXX 600</div>
+      <div class="value">606.92</div>
+      <div class="badge dn">▼ −0.85% 週</div>
+    </div>
+    <div class="hero-stat">
+      <div class="name">Nikkei 225</div>
+      <div class="value">61,409</div>
+      <div class="badge dn">▼ −2.08% 週</div>
+    </div>
+    <div class="hero-stat">
+      <div class="name">TOPIX</div>
+      <div class="value">3,864</div>
+      <div class="badge up">▲ +0.90% 週</div>
+    </div>
+    <div class="hero-stat">
+      <div class="name">10Y UST</div>
+      <div class="value">4.54%</div>
+      <div class="badge dn">▲ 升至年高</div>
+    </div>
+    <div class="hero-stat">
+      <div class="name">WTI原油</div>
+      <div class="value">~$109</div>
+      <div class="badge dn">▲ 周漲逾5%</div>
+    </div>
+  </div>
+</div>
+
+<!-- MACRO BANNER -->
+<div class="macro-banner">
+  <div class="macro-item">
+    <div class="macro-label">📊 美國 CPI（4月）</div>
+    <div class="macro-val">+3.8% YoY</div>
+    <div class="macro-desc">月增 +0.6%，能源與汽油是主因；遠高於預期</div>
+  </div>
+  <div class="macro-item">
+    <div class="macro-label">📊 美國 PPI（4月）</div>
+    <div class="macro-val">+6.0% YoY</div>
+    <div class="macro-desc">月增 +1.4%，創 2022 年 3 月以來最大單月漲幅</div>
+  </div>
+  <div class="macro-item">
+    <div class="macro-label">🏛️ Fed 交棒</div>
+    <div class="macro-val">Warsh 就任</div>
+    <div class="macro-desc">參院 54–45 確認；Powell 留任理事；首次 FOMC 6/16–17</div>
+  </div>
+  <div class="macro-item">
+    <div class="macro-label">🌐 川習峰會</div>
+    <div class="macro-val">北京，5/14–15</div>
+    <div class="macro-desc">聚焦貿易、台灣、AI、伊朗；Boeing 200 架訂單；無重大突破</div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- GLOBAL EVENTS -->
+<div class="section-header">
+  <span class="section-flag">🌐</span>
+  <div>
+    <div class="section-title">GLOBAL EVENTS　本週國際重大事件</div>
+  </div>
+</div>
+
+<div class="card">
+  <ul class="event-list">
+
+    <li>
+      <span class="event-tag tag-geo">地緣政治</span>
+      <strong>川習北京峰會（5/14–15）— 近十年首次美國總統訪中</strong><br>
+      Trump 攜 Jensen Huang（Nvidia）、Tim Cook（Apple）、Elon Musk 等 16 名商界領袖訪問北京，與習近平展開兩天峰會。峰會聚焦貿易、台灣、AI guardrails 及霍莫茲海峽問題。習近平警告「若台灣問題處理不當，美中關係將面臨衝突風險」，同時表示中方希望成為「夥伴而非對手」。Trump 宣布中國同意購買 200 架 Boeing 飛機（市場原預期 500 架），並邀習近平 9/24 訪問白宮。雙方同意就 AI 安全建立對話機制，但未宣布任何重大政策突破，亦無出口管制鬆綁。峰會整體為「管控分歧、防止脫鉤」基調，市場反應偏正面但有所失望。
+    </li>
+
+    <li>
+      <span class="event-tag tag-macro">美國通膨</span>
+      <strong>CPI（4月）+3.8% YoY — 月增 0.6%，燃料與能源主導</strong><br>
+      4 月 CPI 年增率飆升至 3.8%（前值約 3.2%），月增 0.6%，為近期最大單月漲幅。汽油價格月增 15.6% 是主要推手，反映伊朗戰爭對霍莫茲海峽的衝擊仍在持續傳導。核心 CPI（排除食物與能源）月增 0.4%、年增 2.8%，仍具黏性。數據公布後，市場快速重新定價：聯準會 2026 年內降息機率接近歸零，10 年期公債殖利率升至 4.54%（年內新高）。
+    </li>
+
+    <li>
+      <span class="event-tag tag-macro">美國通膨</span>
+      <strong>PPI（4月）月增 +1.4%，YoY +6.0% — 創 2022 年 3 月以來最大</strong><br>
+      生產者物價 4 月月增 1.4%，遠超預期，為近 4 年最大單月漲幅。能源商品月增 7.8%（汽油 +15.6%）是主因；服務業 PPI 月增 1.2%，亦為 2022 年 3 月以來最大，其中貿易服務利潤率上升顯示關稅成本正向下游傳遞。12 個月累計年增 6.0%，達 2022 年 12 月以來最高。市場解讀：上游通膨壓力尚未緩解，CPI 峰值可能仍未到來。
+    </li>
+
+    <li>
+      <span class="event-tag tag-policy">聯準會</span>
+      <strong>Kevin Warsh 就任聯準會主席 — 參院 54–45 確認，Powell 留任理事</strong><br>
+      5/13 參議院以 54–45 票確認 Kevin Warsh 為第 17 任聯準會主席，接任 Powell 八年任期。投票幾乎沿黨派分裂，僅民主黨 Pennsylvania 參議員 Fetterman 越界支持。Warsh（56 歲，前 Morgan Stanley 銀行家）此前於 2006–2011 年擔任過聯準會理事，曾批評量化寬鬆過度。Trump 對其降息期待甚高，但 Warsh 承諾「嚴格保持貨幣政策獨立性」。Powell 以理事身份留任至 2028 年，首次 FOMC 由 Warsh 主持定於 6/16–17。通膨高企加上能源衝擊，市場研判年內降息機率極低。
+    </li>
+
+    <li>
+      <span class="event-tag tag-geo">地緣政治</span>
+      <strong>伊朗戰爭 — 和談停滯，WTI 油價破 $109</strong><br>
+      伊朗上週提出新和平方案，但 Trump 以「完全無法接受」拒絕。本週峰會期間，習近平表示中方願協助推動霍莫茲海峽重新開放，並稱不會向伊朗提供軍事援助。然而談判實質進展有限，油價持續走高，WTI 周漲逾 5% 至約 $109，能源通膨壓力未見緩解。日本等能源進口型經濟體承壓明顯。
+    </li>
+
+  </ul>
+</div>
+
+<!-- US SECTION -->
+<div class="section-header">
+  <span class="section-flag">🇺🇸</span>
+  <div>
+    <div class="section-title">美國　高通膨衝擊升息預期；AI 財報支撐；周尾拉回</div>
+    <div class="section-subtitle">整體：先漲後跌，周小幅收平；SOX 費半 −1.6%</div>
+  </div>
+</div>
+
+<!-- US INDEX TABLE -->
+<div class="card">
+  <div class="card-title">指數週報酬</div>
+  <table>
+    <thead>
+      <tr><th>指數</th><th>收盤</th><th>5日報酬</th><th>YTD</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>S&amp;P 500</td><td>7,408.5</td><td class="chg-up">+0.13%</td><td class="chg-up">+8.2%</td></tr>
+      <tr><td>Nasdaq 100</td><td>29,125</td><td class="chg-dn">−0.38%</td><td class="chg-up">+15.3%</td></tr>
+      <tr><td>DJIA</td><td>49,526</td><td class="chg-dn">−0.17%</td><td class="chg-up">+3.0%</td></tr>
+      <tr><td>費城半導體 SOX</td><td>11,588</td><td class="chg-dn">−1.59%</td><td class="chg-up">+63.6%</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- DAILY REVIEW -->
+<div class="card">
+  <div class="card-title">每日走勢回顧</div>
+  <div class="daily-grid">
+    <div class="day-card">
+      <div class="day-name">週一</div>
+      <div class="day-date">5/11</div>
+      <p>S&amp;P 500 小漲 +0.19% 至 7,412，創盤中新高。Nasdaq 微漲 +0.1%。銅價漲逾 2% 至 $6.46 創紀錄高。Trump 拒絕伊朗最新和平提案，油價上揚，但市場聚焦 AI 樂觀情緒。Cerebras 上調 IPO 定價區間至 $150–$160。</p>
+    </div>
+    <div class="day-card">
+      <div class="day-name">週二</div>
+      <div class="day-date">5/12</div>
+      <p>CPI 4 月 +3.8% YoY 公布，高於預期，市場初步消化後科技股仍撐住。Nasdaq 小漲，創盤中新高。Alibaba（BABA）財報公布後香港股股漲逾 8%，帶動中資股情緒。Warsh 參院確認前夕，長債殖利率走高。</p>
+    </div>
+    <div class="day-card">
+      <div class="day-name">週三</div>
+      <div class="day-date">5/13</div>
+      <p>Warsh 以 54–45 確認就任 Fed 主席，Powell 退至理事。Nasdaq 當日再創收盤新高至 26,402。PPI 月增 1.4% 震驚市場，但科技情緒仍佔上風。Alibaba ADR 上漲。Cerebras 定價 $185，超出指引上緣，全額超額認購。</p>
+    </div>
+    <div class="day-card">
+      <div class="day-name">週四</div>
+      <div class="day-date">5/14</div>
+      <p>Nasdaq 再創歷史新高 26,635（+0.88%）。Cisco 財報爆炸性 +13%，稱進入「網路超級週期」。Cerebras（CBRS）掛牌 Nasdaq，開盤 $350（IPO 價 $185），收盤 +68% 至 $311，為 2019 年 Uber 以來最大美國科技 IPO。川習峰會在北京舉行。DJIA 首次收盤站上 50,000 點。</p>
+    </div>
+    <div class="day-card">
+      <div class="day-name">週五</div>
+      <div class="day-date">5/15</div>
+      <p>多空拉鋸後主要指數均下跌逾 1%。能源通膨疑慮重新主導：油價升破 $109，10Y殖利率創年高 4.54%。Nvidia 跌 -3%、Intel 跌 -5%、AMD/Micron 各跌 3–4%。Boeing 跌 -2.8%（中國訂單遠低於預期 500 架）。Cerebras（CBRS）跌 12%（前日大漲的獲利了結）。</p>
+    </div>
+  </div>
+</div>
+
+<!-- US KEY EVENTS -->
+<div class="card">
+  <div class="card-title">本週重大事件 — 美國</div>
+  <ul class="event-list">
+    <li>
+      <span class="event-tag tag-ipofin">IPO</span>
+      <strong>Cerebras Systems（CBRS）掛牌 Nasdaq — 2026 最大科技 IPO</strong><br>
+      AI 晶片新創 Cerebras 以 $185/股 定價，遠超原始區間 $115–$125；5/14 開盤即跳空至 $350，收盤 +68% 至 $311，IPO 融資 $55.5 億，為 2019 年 Uber 以來最大美國科技 IPO。完全稀釋市值達 $564 億。Cerebras 以晶圓級（Wafer Scale Engine 3）AI 晶片見長，主打高速度低延遲的推理（inference）工作負載，與 Nvidia GPU 互補而非正面取代。2025 年營收 $5.1 億（+76% YoY），已與 OpenAI 簽署 $200 億以上多年合約（750MW 推理容量），並獲 AWS 進入雲端服務。主要風險：客戶高度集中（82% 來自阿聯酋相關機構），估值為收入的 130x 以上。市場將 Cerebras 視為年內 SpaceX、OpenAI、Anthropic IPO 潮的先行指標。
+    </li>
+    <li>
+      <span class="event-tag tag-corp">財報</span>
+      <strong>Cisco（CSCO）+13% — 稱進入「AI 網路超級週期」</strong><br>
+      Q3 FY2026（截至 4/25）EPS $1.06、營收 $15.8B，雙雙符合預期。然而真正驅動股價的是展望：Cisco 將 FY2026 AI 基礎設施與超大規模客戶訂單預估從 $50 億上調至 $90 億，FY2027 至少 $60 億。全年營收指引上調至 $62.8–63.0B（原指引 $61.2–61.7B）。CEO Chuck Robbins 稱「我們正在進入一個網路超級週期」。Core Networking 業務單季成長 25%。同日宣布裁員約 5%（~4,000 人），轉型聚焦 AI 矽晶片、光學與安全。股價單日 +13%，為 2011 年以來最大單日漲幅，一度觸及歷史高位。
+    </li>
+    <li>
+      <span class="event-tag tag-corp">財報</span>
+      <strong>Applied Materials（AMAT）Q2 FY2026 EPS $2.86 vs 預期 $2.68，Beat +6.7%</strong><br>
+      半導體設備龍頭財報優於預期，EPS 年增約 20%（vs 去年同期 $2.39）。DRAM 設備需求強勁（佔比從 27% 升至 34%），反映 AI 記憶體（HBM、高容量 DRAM）的擴產投資持續加速。中國出口限制帶來約 $6 億 FY2026 營收逆風，但非中國業務彌補缺口。管理層對 AI 驅動的半導體製程轉型（Gate-All-Around、先進封裝）前景樂觀。股價反應溫和，因市場已對強勁結果有所預期。
+    </li>
+  </ul>
+</div>
+
+<div class="insight-box">
+  <h4>📌 本週核心洞察 — 美國市場</h4>
+  <p>本週美國市場展現「AI 財報牛市 vs 通膨熊力」的典型博弈格局。前四天在 Cisco 網路超級週期、Cerebras IPO 熱潮驅動下，Nasdaq 連創歷史新高；但週五 CPI 3.8% + PPI 6.0% 的數據組合令市場猛然意識到聯準會降息已是遙遠未來，10Y殖利率升至 4.54%，高估值科技股首當其衝。Warsh 就任後的首次 FOMC（6/16–17）將是觀察新主席立場的關鍵視窗。</p>
+</div>
+
+<!-- US EARNINGS TABLE -->
+<div class="card">
+  <div class="card-title">本週重點財報</div>
+  <table class="earnings-table">
+    <thead>
+      <tr>
+        <th>股票</th>
+        <th>公司</th>
+        <th>結果</th>
+        <th>股價反應</th>
+        <th>重點摘要</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="ticker">CSCO</div></td>
+        <td><div class="company">Cisco Systems</div></td>
+        <td><span class="result-badge up">BEAT</span></td>
+        <td><span class="stock-reaction chg-up">+13%（5/14）</span></td>
+        <td>Q3 FY2026 EPS $1.06、營收 $15.8B。AI 超大規模訂單全年指引上調至 $90 億（原 $50 億），FY27 訂單目標 $60 億+。Core Networking +25%。宣布裁員 ~5%，聚焦 AI 矽晶片與光學。CEO 稱進入「網路超級週期」，股價創 2011 年以來最大單日漲幅。</td>
+      </tr>
+      <tr>
+        <td><div class="ticker">AMAT</div></td>
+        <td><div class="company">Applied Materials</div></td>
+        <td><span class="result-badge up">BEAT</span></td>
+        <td><span class="stock-reaction chg-up">+3–5%</span></td>
+        <td>Q2 FY2026 EPS $2.86 vs 預期 $2.68（+6.7%）。DRAM 設備佔比從 27% 升至 34%，AI 記憶體擴產動能強。中國出口管制形成 ~$6 億年度逆風。GAA 製程設備需求前景樂觀。</td>
+      </tr>
+      <tr>
+        <td><div class="ticker">CBRS</div></td>
+        <td><div class="company">Cerebras Systems（IPO）</div></td>
+        <td><span class="result-badge up">IPO +68%</span></td>
+        <td><span class="stock-reaction chg-up">收盤 $311（IPO 價 $185）</span></td>
+        <td>2026 最大美國科技 IPO，融資 $55.5 億，完稀市值 $564 億。開盤 $350，當日高點 $386。晶圓級 AI 推理晶片，OpenAI $200 億+ 合約為核心護城河，AWS 為第二大夥伴。次日回落 −12%。</td>
+      </tr>
+      <tr>
+        <td><div class="ticker">BABA</div></td>
+        <td><div class="company">Alibaba（FY Q4）</div></td>
+        <td><span class="result-badge neutral">EPS MISS / 雲端 BEAT</span></td>
+        <td><span class="stock-reaction chg-up">ADR +7–8%（5/13）</span></td>
+        <td>Q4 FY2026 營收 ¥2,434 億（+3% YoY），略低於預期；非 GAAP EPS 大幅 miss（−99.7% YoY），因 AI 與即時零售大規模投資。但雲端事業亮眼：雲端 +38% YoY、AI 相關產品連續 11 季三位數成長（佔雲端外部收入 30%）。CEO 稱 AI 在一年內可能超過雲端業務 50%。市場忽略利潤下滑，聚焦長期 AI 邏輯，ADR 大漲。</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- EUROPE SECTION -->
+<div class="section-header">
+  <span class="section-flag">🇪🇺</span>
+  <div>
+    <div class="section-title">歐洲　技術股補跌；德法承壓；英股相對抗跌</div>
+    <div class="section-subtitle">整體：走弱，受美國通膨數據與油價上揚拖累</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">指數週報酬</div>
+  <table>
+    <thead>
+      <tr><th>指數</th><th>收盤</th><th>5日報酬</th><th>YTD</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>STOXX 600</td><td>606.92</td><td class="chg-dn">−0.85%</td><td class="chg-up">+2.5%</td></tr>
+      <tr><td>DAX 40（德）</td><td>23,951</td><td class="chg-dn">−1.59%</td><td class="chg-dn">−2.2%</td></tr>
+      <tr><td>CAC 40（法）</td><td>7,953</td><td class="chg-dn">−1.97%</td><td class="chg-dn">−2.4%</td></tr>
+      <tr><td>FTSE 100（英）</td><td>10,195</td><td class="chg-dn">−0.37%</td><td class="chg-up">+2.7%</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <div class="card-title">本週重點</div>
+  <ul class="event-list">
+    <li>
+      <span class="event-tag tag-macro">歐元區</span>
+      <strong>德國 ZEW 景氣預期指數（5月）回升至 −10.2</strong><br>
+      雖仍在負值區間，但較 4 月的 −17.2 顯著改善，優於市場預期的 −19.8，顯示德國企業對未來六個月的景氣信心略有回暖，可能受川習峰會後地緣政治緊張情勢稍緩、以及歐洲科技股重估預期推動。但 DAX 本週仍跌 1.6%，反映市場對全球通膨與利率前景的擔憂蓋過短期情緒改善。
+    </li>
+    <li>
+      <span class="event-tag tag-macro">歐元區工業</span>
+      <strong>歐元區 3 月工業生產月增 +0.2%（略低於預期 +0.3%）</strong><br>
+      中間財與資本財表現最強，能源與非耐久消費財下滑。德國工業繼續收縮，法、義、西則有所回升。法國失業率 Q1 攀升至 8.1%（2021 年以來最高），青年失業率仍高達 21.1%。整體數據顯示歐元區經濟動能仍疲弱，ECB 緊縮路徑的終點尚未明確。
+    </li>
+    <li>
+      <span class="event-tag tag-geo">全球貿易</span>
+      <strong>川習峰會對歐洲的含義 — 稀土與貿易重組</strong><br>
+      美中峰會雖無重大突破，但雙方討論稀土和半導體供應鏈管理機制，暗示中長期供應鏈重組壓力持續。對歐洲而言，稀土與電動車電池原料高度依賴中國的現實未有改變。美方也持續推進與歐洲的「對中協調」議題，歐洲製造業面臨來自美國進口稅與中國競爭的雙重壓力。
+    </li>
+  </ul>
+</div>
+
+<!-- ASIA SECTION -->
+<div class="section-header">
+  <span class="section-flag">🌏</span>
+  <div>
+    <div class="section-title">亞太　川習峰會注目；日股兩樣情；印尼 MSCI 疑慮再起</div>
+    <div class="section-subtitle">整體：分化明顯；新加坡、泰國相對強；印尼、台灣承壓</div>
+  </div>
+</div>
+
+<!-- ASIA INDEX TABLE -->
+<div class="card">
+  <div class="card-title">指數週報酬（資料來源：Bloomberg，截至 2026/05/15 收盤）</div>
+  <table>
+    <thead>
+      <tr><th>指數</th><th>收盤</th><th>5日報酬</th><th>YTD</th></tr>
+    </thead>
+    <tbody>
+      <tr><td colspan="4" class="sub-label">東北亞</td></tr>
+      <tr><td>🇯🇵 TOPIX</td><td>3,864</td><td class="chg-up">+0.90%</td><td class="chg-up">+13.3%</td></tr>
+      <tr><td>🇯🇵 Nikkei 225</td><td>61,409</td><td class="chg-dn">−2.08%</td><td class="chg-up">+22.0%</td></tr>
+      <tr><td>🇰🇷 KOSPI</td><td>7,493</td><td class="chg-dn">−0.06%</td><td class="chg-up">+77.8%</td></tr>
+      <tr><td>🇹🇼 TAIEX</td><td>41,172</td><td class="chg-dn">−1.04%</td><td class="chg-up">+42.2%</td></tr>
+      <tr><td>🇨🇳 滬深 300</td><td>4,860</td><td class="chg-dn">−0.25%</td><td class="chg-up">+5.0%</td></tr>
+      <tr><td>🇨🇳 上証綜指</td><td>4,135</td><td class="chg-dn">−1.07%</td><td class="chg-up">+4.2%</td></tr>
+      <tr><td>🇭🇰 恒生指數</td><td>25,963</td><td class="chg-dn">−1.63%</td><td class="chg-up">+1.3%</td></tr>
+      <tr><td colspan="4" class="sub-label">印度</td></tr>
+      <tr><td>🇮🇳 Nifty 50</td><td>23,644</td><td class="chg-dn">−2.20%</td><td class="chg-dn">−9.5%</td></tr>
+      <tr><td>🇮🇳 Nifty MidSmall 400</td><td>20,218</td><td class="chg-dn">−2.88%</td><td class="chg-up">+0.0%</td></tr>
+      <tr><td colspan="4" class="sub-label">東南亞</td></tr>
+      <tr><td>🇸🇬 STI</td><td>4,989</td><td class="chg-up">+1.36%</td><td class="chg-up">+7.4%</td></tr>
+      <tr><td>🇹🇭 SET</td><td>1,518</td><td class="chg-up">+1.17%</td><td class="chg-up">+20.5%</td></tr>
+      <tr><td>🇲🇾 KLCI</td><td>1,740</td><td class="chg-dn">−0.45%</td><td class="chg-up">+3.6%</td></tr>
+      <tr><td>🇮🇩 JCI</td><td>6,723</td><td class="chg-dn">−5.20%</td><td class="chg-dn">−22.2%</td></tr>
+      <tr><td>🇵🇭 PSEi</td><td>5,977</td><td class="chg-up">+0.27%</td><td class="chg-dn">−1.3%</td></tr>
+      <tr><td>🇻🇳 VN-Index</td><td>1,922</td><td class="chg-up">+0.33%</td><td class="chg-up">+7.7%</td></tr>
+      <tr><td colspan="4" class="sub-label">大洋洲</td></tr>
+      <tr><td>🇦🇺 ASX 200</td><td>8,631</td><td class="chg-dn">−1.30%</td><td class="chg-dn">−1.0%</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:#999;margin-top:8px;font-family:'Helvetica Neue',Arial,sans-serif;">✓ 數據來源：Bloomberg（CHG_PCT_5D），截至 2026/05/15 收盤</p>
+</div>
+
+<!-- ASIA EVENTS -->
+<div class="card">
+  <div class="card-title">重要事件 &amp; 總結 — 亞洲</div>
+  <ul class="event-list">
+
+    <li>
+      <span class="event-tag tag-corp">🇯🇵 日本</span>
+      <strong>Nikkei −2.08% vs TOPIX +0.90% — AI 集中股拉回，金融與傳統製造補漲</strong><br>
+      本週日本股市呈現明顯兩極化：Nikkei 225 大跌 2.08%，而成分股更為分散的 TOPIX 反而小漲 0.90%，顯示過去一輪 Nikkei 漲勢由 AI 半導體少數重量股（Advantest、東京電子、SoftBank）集中拉動的結構性問題。週五因美國 CPI 衝擊與 Taiwan 局勢緊張，Kioxia −8.3%、Fujikura −8.4%、Advantest −7.9% 等 AI 概念股遭重挫。另一方面，日本 PPI 強勁引發市場對日本銀行（BOJ）提前升息的預期，金融股受益於利差擴大而表現相對抗跌。日圓約在 158 兌美元，能源進口成本持續攀升加重通膨壓力。
+    </li>
+
+    <li>
+      <span class="event-tag tag-corp">🇨🇳🇭🇰 中國 / 香港</span>
+      <strong>川習峰會：無重大突破，恒生 −1.63%；阿里巴巴本週最亮眼</strong><br>
+      川習峰會期間，習近平警告台灣問題「若處理不當將引發衝突」，但同時強調雙方應為夥伴。峰會整體基調穩健，無重大關稅鬆綁，但「防止再度惡化」的訊號已使科技股情緒獲得支撐。阿里巴巴（9988.HK）財報發布後，港股一度大漲 8.4%，帶動中資科技股整體反彈，但受全球風險情緒收斂，周末恒生指數回落 −1.63%。市場關注 6 月聯準會與北京政策後續，尤其是 AI 出口管制的協調機制是否有具體進展。
+    </li>
+
+    <li>
+      <span class="event-tag tag-corp">🇰🇷 韓國</span>
+      <strong>KOSPI 幾近持平 −0.06%；YTD 仍居全球前列 +77.8%</strong><br>
+      韓國本週隨全球半導體板塊承壓而微幅回落，但 YTD 漲幅仍以 +77.8% 居全球主要指數前列，主要受益於 AI HBM 記憶體需求爆發。Samsung 與 SK Hynix 的 HBM3E 供應持續高景氣，外資在 4 月回補後本週觀望。市場等待下半年 HBM 出貨進度與 Samsung 記憶體部門 Q2 前瞻。
+    </li>
+
+    <li>
+      <span class="event-tag tag-corp">🇹🇼 台灣</span>
+      <strong>TAIEX −1.04%；台灣問題納入川習峰會引發謹慎情緒</strong><br>
+      習近平在峰會中將台灣列為「最重要議題」，警告若處理不當將有衝突風險，引發台灣資產風險溢酬上升。TAIEX 週跌 1.04%，AI 半導體板塊（聯發科、聯電等）承壓。然而 YTD 台股仍是全球最強市場之一（+42.2%），背後是 AI 算力建置對 TSMC 先進製程與 CoWoS 先進封裝的持續巨大需求。
+    </li>
+
+    <li>
+      <span class="event-tag tag-macro">🇮🇳 印度</span>
+      <strong>Nifty 50 −2.20%、Nifty MidSmall −2.88% — 油價、盧比創歷史新低、AI 缺席三重壓制</strong><br>
+      本週印度股市承受多重衝擊，Nifty 50 三週來首見單週下跌，BSE Sensex 跌 2.70% 至 75,238，為 2026 年 3 月 13 日以來最大單週跌幅。<br><br>
+      <strong>盧比跌破 96，創歷史新低：</strong>5/15 盤中盧比跌至 96.14 兌美元，觸發政策緊急應對——印度政府 5/16 宣布將銀條進口從「自由進口」改為「限制進口」，要求取得對外貿易總局（DGFT）許可證，以壓縮外匯支出、捍衛匯率。伊朗戰爭爆發以來，印度外匯儲備已大幅消耗，匯率緩衝空間持續壓縮。<br><br>
+      <strong>能源輸入通膨是核心壓力：</strong>印度是全球前三大原油進口國，WTI 破 $109 直接惡化貿易條件，推升輸入性通膨並限制 RBI 降息空間。能源板塊（週跌 −2.40%）、銀行（−2.89%）、房地產（−8.17%，本週最弱板塊）均受壓；HSBC 分析師指出，能源衝擊對印度構成負面貿易條件衝擊，同時使增長預測與財政管理更加複雜。<br><br>
+      <strong>錯失 AI 浪潮：市值蒸發 $9,240 億：</strong>本週最具結構性意義的訊號是 Bloomberg 報導——印度股市已從 AI 浪潮中缺席，市值蒸發達 $9,240 億，排名岌岌可危，可能首次三年來跌出全球前五大市場。相較於台灣與韓國由半導體 / AI 基本面驅動的強勁漲勢，印度缺乏對應的 AI 相關龍頭股。IT 板塊本週跌 −5.71%，YTD 慘跌：Infosys −31.3%、TCS −28.6%、HCL Tech −28.8%，三大 IT 外包龍頭反映市場對 AI 顛覆傳統 IT 服務模式的持續定價。<br><br>
+      <strong>積極面：外資單日回流 + 政府資本支出擴張 + ASML 合作：</strong>5/15 全球基金淨買入印度股票 ₹133 億，顯示短線超賣後部分資金回補。政府 FY27 資本支出預算年增 11.5% 至 ₹12.2 兆，交通運輸建設管線約達 ₹7.6 兆，FY27 訂單招標預計成長 10–15%。另一值得關注的長線催化劑：ASML 與塔塔電子（Tata Electronics）5/16 宣布合作，由 ASML 提供技術支援塔塔電子在古吉拉特邦建立 300mm 半導體晶圓廠，是印度半導體製造生態系的重要里程碑。共同基金 AUM 4 月月增 11.1% 至 ₹81.9 兆，SIP 定期定額流入 ₹3,112 億（約佔淨股票流入 80%），國內機構資金（DII）持續為市場提供結構性支撐。<br><br>
+      <strong>個股：</strong>YTD 強勢股集中於資源與基礎建設——ONGC（+30.9%，油價紅利）、Adani Ports（+21.2%）、Adani Enterprises（+20.8%）、Hindalco（+19.3%）、Tata Steel（+19.2%）。Bharti Airtel（5/13）與 ITC（5/15）本週發布 FY2026 年度財報，市場解讀溫和。製藥板塊（週漲 +2.18%）與 FMCG（−0.22%）相對抗跌，提供防禦性庇護。
+    </li>
+
+    <li>
+      <span class="event-tag tag-geo">🇮🇩 印尼</span>
+      <strong>JCI 週跌 −5.20%，年內累計跌幅達 −22.2% — MSCI 降級疑慮、盧比走弱</strong><br>
+      印尼本週再度成為區域最弱環節，JCI 週跌逾 5%，為全球主要指數中跌幅最深者。多重壓力疊加：①MSCI 5/12 發布半年指數審查結果，自標普移除 6 支印尼成分股（可能造成約 29.5 兆印尼盾外資流出）；②盧比徘徊在 IDR17,400 兌美元附近（歷史低位附近），據報 Prabowo 總統向央行行長施壓；③4 月製造業 PMI 九個月來首度萎縮。MSCI 正式決定是否維持印尼「新興市場」地位的關鍵窗口為 6 月複評，若降級為「前緣市場（Frontier）」，強制賣壓規模估計可達 $130 億（GS 極端情境）。
+    </li>
+
+    <li>
+      <span class="event-tag tag-corp">🇸🇬🇹🇭 東協亮點</span>
+      <strong>新加坡 STI +1.36%、泰國 SET +1.17% — 相對防禦</strong><br>
+      在全球風險情緒趨謹慎的一週中，新加坡與泰國表現相對抗跌。STI 受惠於金融與房地產估值穩定，泰國 SET 則受旅遊復甦數據與政策支撐。越南 VN-Index 小漲 +0.33%，受益於外資製造業轉移趨勢持續。
+    </li>
+
+  </ul>
+</div>
+
+<!-- OUTLOOK -->
+<div class="section-header">
+  <span class="section-flag">🔭</span>
+  <div>
+    <div class="section-title">下週展望 — May 18–22, 2026</div>
+  </div>
+</div>
+
+<div class="outlook-grid">
+  <div class="outlook-card">
+    <h4>🇺🇸 美國</h4>
+    <ul>
+      <li>Nvidia（NVDA）Q1 財報（5/20）— AI 主題最關鍵驗證點</li>
+      <li>Walmart Q1 FY2027 財報（5/21）— 消費趨勢觀察</li>
+      <li>4 月零售銷售（5/15 已公布，後續解讀持續）</li>
+      <li>Warsh 新時代首週 — 市場觀察風格轉變訊號</li>
+      <li>Cerebras（CBRS）掛牌後走勢 — AI IPO 熱潮持續性</li>
+      <li>伊朗談判動向 — 影響油價與通膨路徑</li>
+      <li>UMich 消費信心（5 月）已公布，關注後續修正</li>
+    </ul>
+  </div>
+  <div class="outlook-card eu">
+    <h4>🇪🇺 歐洲</h4>
+    <ul>
+      <li>ECB 下次決議：7/24</li>
+      <li>歐元區 CPI 確認值（5 月初值上週已公布）</li>
+      <li>德法製造業景氣持續低迷，關注 PMI</li>
+      <li>STOXX 600 財報季尾聲，能源板塊值得追蹤</li>
+    </ul>
+  </div>
+  <div class="outlook-card asia">
+    <h4>🌏 亞太</h4>
+    <ul>
+      <li>BOJ 下次會議 6/16–17 — 若日圓跌破 160 可能提前行動</li>
+      <li>印尼 MSCI 後續 — 6 月複評窗口，降級疑慮未除</li>
+      <li>台灣問題後川習時代 — 地緣政治溢酬需持續評估</li>
+      <li>中國五月製造業 PMI（5/31）</li>
+      <li>India FII 外資流向 — 高估值 + 能源壓力雙重逆風</li>
+      <li>TAIEX AI 半導體板塊 — 跟隨 Nvidia 財報方向</li>
+    </ul>
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<footer>
+  Curated by <strong>Irene Shiang</strong> &nbsp;·&nbsp; Generated May 17, 2026 &nbsp;·&nbsp; Sources: Bloomberg, BLS (CPI/PPI), CNBC, Reuters, Goldman Sachs, T. Rowe Price, FactSet, LSEG
+</footer>
+
+</body>
+</html>
