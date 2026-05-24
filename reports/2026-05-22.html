@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Weekly Market Recap | May 18 – 22, 2026</title>
+<style>
+  :root {
+    --bg: #f7f7f5;
+    --card: #ffffff;
+    --border: #e2e0da;
+    --text: #1a1a1a;
+    --text-sub: #4a4a4a;
+    --text-muted: #7a7a7a;
+    --green: #1a7a3c;
+    --red: #c0392b;
+    --accent: #1a3a5c;
+    --accent-light: #eef2f7;
+    --ticker-bg: #1a1a1a;
+    --ticker-text: #f0ede6;
+    --section-border: #1a3a5c;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 17px;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  .nav-bar {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+  .nav-bar a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  .nav-bar a:hover { text-decoration: underline; }
+  .nav-week { font-weight: 700; font-size: 15px; color: var(--text); }
+
+  .ticker-bar {
+    background: var(--ticker-bg);
+    color: var(--ticker-text);
+    padding: 10px 32px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .ticker-item { display: flex; gap: 7px; align-items: center; white-space: nowrap; }
+  .ticker-item .label { color: #a0a0a0; }
+  .ticker-item .val { color: #f0ede6; font-weight: 600; }
+  .ticker-item .chg.up { color: #52b788; }
+  .ticker-item .chg.dn { color: #e07070; }
+  .ticker-item .chg.flat { color: #a0a0a0; }
+
+  .hero {
+    background: linear-gradient(135deg, #0d1b2e 0%, #1a3a5c 55%, #1e5c3a 100%);
+    color: #f0ede6;
+    padding: 56px 64px 48px;
+  }
+  .hero-eyebrow {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #a8c4d8;
+    margin-bottom: 12px;
+  }
+  .hero h1 { font-size: 40px; font-weight: 700; line-height: 1.2; margin-bottom: 4px; }
+  .hero h1 em { font-style: normal; color: #7ec8e3; }
+  .hero-sub {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    color: #a8c4d8;
+    margin-bottom: 32px;
+  }
+  .hero-stats { display: flex; flex-wrap: wrap; gap: 20px; }
+  .hero-stat {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px;
+    padding: 14px 20px;
+    min-width: 130px;
+  }
+  .hero-stat .name {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #a8c4d8;
+    margin-bottom: 4px;
+  }
+  .hero-stat .value { font-size: 21px; font-weight: 700; }
+  .hero-stat .badge { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 12px; font-weight: 600; }
+  .hero-stat .badge.up { color: #52b788; }
+  .hero-stat .badge.dn { color: #e07070; }
+  .hero-stat .badge.flat { color: #a8c4d8; }
+
+  .macro-banner {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    padding: 24px 64px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .macro-item { flex: 1; min-width: 200px; border-left: 3px solid var(--section-border); padding-left: 16px; }
+  .macro-item .macro-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .macro-item .macro-val { font-size: 17px; font-weight: 700; color: var(--text); }
+  .macro-item .macro-desc { font-size: 13px; color: var(--text-sub); }
+
+  .main { max-width: 1100px; margin: 0 auto; padding: 40px 32px; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 48px 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--section-border);
+  }
+  .section-flag { font-size: 26px; }
+  .section-title {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.5px;
+  }
+  .section-subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-style: italic;
+  }
+
+  .result-badge {
+    display: inline-block;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+  .result-badge.up { background: #f0f7f3; color: #1a7a3c; border: 1px solid #a8d5b8; }
+  .result-badge.dn { background: #fdf3f2; color: #c0392b; border: 1px solid #e8a09a; }
+  .result-badge.neutral { background: #f5f5f0; color: #555; border: 1px solid #ccc; }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+  }
+  .card-title {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  table { width: 100%; border-collapse: collapse; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 15px; }
+  thead th {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+    padding: 6px 10px;
+    text-align: left;
+    background: #f9f9f7;
+  }
+  thead th:nth-child(2), thead th:nth-child(3), thead th:nth-child(4) { text-align: right; }
+  tbody td { padding: 10px 10px; border-bottom: 1px solid #f0ede6; vertical-align: middle; }
+  tbody td:nth-child(2), tbody td:nth-child(3), tbody td:nth-child(4) { text-align: right; font-weight: 600; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: #fafaf8; }
+  .chg-up { color: var(--green); }
+  .chg-dn { color: var(--red); }
+
+  .sub-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    padding: 8px 10px 4px;
+    background: #f9f9f7;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .event-list { list-style: none; }
+  .event-list li { padding: 14px 0; border-bottom: 1px solid var(--border); line-height: 1.65; }
+  .event-list li:last-child { border-bottom: none; }
+  .event-tag {
+    display: inline-block;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-right: 8px;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+  .tag-macro { background: #eef2f7; color: #1a3a5c; }
+  .tag-policy { background: #f0f7f3; color: #1a5c2d; }
+  .tag-geo { background: #fdf3f2; color: #7a1a10; }
+  .tag-corp { background: #f7f3ee; color: #5c3a1a; }
+  .tag-ipo { background: #f5f0f7; color: #3a1a5c; }
+
+  .earnings-table { border-collapse: collapse; width: 100%; font-size: 15px; }
+  .earnings-table thead th {
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+    color: var(--text-muted); border-bottom: 2px solid var(--border); padding: 8px 10px;
+    background: #f9f9f7; text-align: left;
+  }
+  .earnings-table tbody td {
+    padding: 12px 10px; border-bottom: 1px solid #f0ede6;
+    vertical-align: top; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 14px;
+  }
+  .earnings-table tbody tr:hover { background: #fafaf8; }
+  .earnings-table .ticker { font-weight: 800; font-size: 14px; letter-spacing: 0.5px; }
+  .earnings-table .company { font-size: 13px; color: var(--text-sub); }
+  .stock-reaction { font-weight: 700; font-size: 13px; }
+
+  .daily-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .day-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 14px; }
+  .day-card .day-name {
+    font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin-bottom: 4px;
+  }
+  .day-card .day-date { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
+  .day-card p { font-size: 13px; line-height: 1.55; color: var(--text-sub); }
+
+  .insight-box {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 18px 24px;
+    margin: 20px 0;
+  }
+  .insight-box h4 {
+    font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 13px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 8px;
+  }
+  .insight-box p { font-size: 15px; color: var(--text); }
+
+  .outlook-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 8px; }
+  .outlook-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-top: 3px solid var(--section-border); border-radius: 8px; padding: 20px;
+  }
+  .outlook-card.eu { border-top-color: #2d6a1a; }
+  .outlook-card.asia { border-top-color: #8b1a1a; }
+  .outlook-card h4 {
+    font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 13px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; color: var(--text);
+  }
+  .outlook-card ul { list-style: none; }
+  .outlook-card ul li { font-size: 14px; padding: 6px 0; border-bottom: 1px solid var(--border); color: var(--text-sub); }
+  .outlook-card ul li:last-child { border-bottom: none; }
+  .outlook-card ul li::before { content: "→ "; color: var(--accent); font-weight: 700; }
+
+  footer {
+    background: #1a1a1a; color: #888; padding: 28px 64px;
+    font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 13px; margin-top: 64px;
+  }
+  footer strong { color: #f0ede6; }
+
+  @media (max-width: 800px) {
+    .hero { padding: 32px 24px; }
+    .main { padding: 24px 16px; }
+    .macro-banner { padding: 16px 24px; }
+    .daily-grid { grid-template-columns: 1fr 1fr; }
+    .outlook-grid { grid-template-columns: 1fr; }
+    footer { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav-bar">
+  <a href="../reports/2026-05-15.html">◀ May 11 – 15</a>
+  <span class="nav-week">May 18 – 22, 2026</span>
+  <a href="../archive.html">全部週報</a>
+</nav>
+
+<!-- TICKER BAR -->
+<div class="ticker-bar">
+  <div class="ticker-item"><span class="label">S&P 500</span><span class="val">7,473</span><span class="chg up">▲ +0.88%</span></div>
+  <div class="ticker-item"><span class="label">Nasdaq 100</span><span class="val">29,482</span><span class="chg up">▲ +1.22%</span></div>
+  <div class="ticker-item"><span class="label">DJIA</span><span class="val">50,580</span><span class="chg up">▲ +2.13%</span></div>
+  <div class="ticker-item"><span class="label">SOX 費半</span><span class="val">12,203</span><span class="chg up">▲ +5.30%</span></div>
+  <div class="ticker-item"><span class="label">STOXX 600</span><span class="val">625.12</span><span class="chg up">▲ +3.00%</span></div>
+  <div class="ticker-item"><span class="label">DAX</span><span class="val">24,889</span><span class="chg up">▲ +3.92%</span></div>
+  <div class="ticker-item"><span class="label">Nikkei 225</span><span class="val">63,339</span><span class="chg up">▲ +3.14%</span></div>
+  <div class="ticker-item"><span class="label">TAIEX</span><span class="val">42,268</span><span class="chg up">▲ +2.66%</span></div>
+  <div class="ticker-item"><span class="label">KOSPI</span><span class="val">7,848</span><span class="chg up">▲ +4.73%</span></div>
+  <div class="ticker-item"><span class="label">10Y UST</span><span class="val">4.56%</span><span class="chg dn">▲ 仍高</span></div>
+  <div class="ticker-item"><span class="label">30Y UST</span><span class="val">5.07%</span><span class="chg dn">▲ 破 5%</span></div>
+  <div class="ticker-item"><span class="label">VIX</span><span class="val">~17</span><span class="chg up">▼ 回落</span></div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Global Markets Weekly Recap</div>
+  <h1>Week of <em>May 18 – 22</em>, 2026</h1>
+  <div class="hero-sub">資料截至 2026/05/22 收盤 ｜ Nvidia 財報 · SpaceX IPO 申請 · Trump 稅改案眾院通過 · 印尼 MSCI 正式除名 · Dow 創歷史新高 50,580</div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="name">S&amp;P 500</div>
+      <div class="value">7,473</div>
+      <div class="badge up">▲ +0.88% 週 ｜ 連8週上漲</div>
+    </div>
+    <div class="hero-stat">
+      <div class="name">DJIA</div>
+      <div class="value">50,580</div>
+      <div class="badge up">▲ +2.13%，創歷史新高</div>
+    </div>
+    <div class="hero-stat">
+      <div class="name">SOX 費半</div>
+      <div class="value">12,203</div>
+      <div class="badge up">▲ +5.30%，YTD +72.3%</div>
+    </div>
+    <div class="hero-stat">
+      <div class="name">STOXX 600</div>
+      <div class="value">625.12</div>
+      <div class="badge up">▲ +3.00%</div>
+    </div>
+    <div class="hero-stat">
+      <div class="name">Nikkei 225</div>
+      <div class="value">63,339</div>
+      <div class="badge up">▲ +3.14%，YTD +25.8%</div>
+    </div>
+    <div class="hero-stat">
+      <div class="name">30Y UST</div>
+      <div class="value">5.07%</div>
+      <div class="badge dn">▲ 破 5%，逾 2 年新高</div>
+    </div>
+    <div class="hero-stat">
+      <div class="name">Warsh 就任日</div>
+      <div class="value">5/22</div>
+      <div class="badge flat">首次 FOMC 6/16–17</div>
+    </div>
+  </div>
+</div>
+
+<!-- MACRO BANNER -->
+<div class="macro-banner">
+  <div class="macro-item">
+    <div class="macro-label">💻 Nvidia Q1 FY27</div>
+    <div class="macro-val">營收 $816 億</div>
+    <div class="macro-desc">YoY +85%，Q2 指引 $450 億；資料中心 $752 億，股息 25 倍增</div>
+  </div>
+  <div class="macro-item">
+    <div class="macro-label">🚀 SpaceX S-1 公開</div>
+    <div class="macro-val">估值 ~$2 兆</div>
+    <div class="macro-desc">5/20 公開申報；Nasdaq「SPCX」；目標融資 $750–800 億</div>
+  </div>
+  <div class="macro-item">
+    <div class="macro-label">🇺🇸 Trump 稅改案</div>
+    <div class="macro-val">眾院通過</div>
+    <div class="macro-desc">估計十年增債 $3–5 兆；20Y 標售告敗；殖利率全線上揚</div>
+  </div>
+  <div class="macro-item">
+    <div class="macro-label">🛢️ 伊朗和談</div>
+    <div class="macro-val">起伏震盪</div>
+    <div class="macro-desc">伊朗核鈾立場週四逆轉；週五誤報帶動 Dow 創歷史新高 50,580</div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- GLOBAL EVENTS -->
+<div class="section-header">
+  <span class="section-flag">🌐</span>
+  <div>
+    <div class="section-title">GLOBAL EVENTS　本週國際重大事件</div>
+  </div>
+</div>
+
+<div class="card">
+  <ul class="event-list">
+
+    <li>
+      <span class="event-tag tag-geo">地緣政治</span>
+      <strong>伊朗和平談判起伏 — 週五出現「草案接近」誤報，油價波動</strong><br>
+      本週中東局勢仍是市場核心變數。週四，伊朗最高領袖命令「近武器級濃縮鈾不得移往境外」，使和談複雜化，歐洲市場震盪。週五美伊雙方再度傳出接近達成協議的訊號，後被確認為誤報，但消息帶動道瓊上漲 294 點並創歷史新高（50,580），顯示任何和平進展都將是巨大正面催化劑。油價週內波動加劇，WTI 維持在 $105–110 區間。Kevin Warsh 在 5/22 正式就任聯準會主席，繼承了一個油價高企、通膨頑固、財政惡化的複雜環境。
+    </li>
+
+    <li>
+      <span class="event-tag tag-macro">財政/政策</span>
+      <strong>Trump 稅改法案（「One Big Beautiful Bill」）眾院通過，十年增債逾 $3 兆</strong><br>
+      Trump 週二親赴國會山莊遊說，眾議院於 5/21 以極微弱多數通過稅改法案，延伸 2017 年減稅、增加國防及邊境支出。非黨派預算分析估計法案將使赤字在十年內增加 $3–5 兆。法案通過前，5/21 一場 $160 億的 20 年期公債標售需求異常疲弱，得標殖利率 5.047%（遠高於前一場的 4.810%），顯示債券市場對財政軌跡的憂慮正在定價。法案現送交參院，辯論仍激烈，市場持續監控殖利率動向。
+    </li>
+
+    <li>
+      <span class="event-tag tag-ipo">IPO 浪潮</span>
+      <strong>SpaceX 公開申報 S-1，估值衝破 $2 兆 — 潛在史上最大 IPO</strong><br>
+      5/20 Nvidia 財報後同日，SpaceX 公開提交 S-1 招股書，確認將以代碼「SPCX」於 Nasdaq 掛牌，目標融資達 $750–800 億，估值逾 $2 兆（遠超 Tesla 約 $1.4 兆市值）。招股書揭露：Starlink 連結部門 Q1 2026 營收 $32.6 億（EBITDA $20.9 億），為盈利核心；全公司含 xAI 合併後 Q1 合計虧損 $19.4 億（AI 部門耗費龐大）。SpaceX 控制 Musk 握有 85% 投票權。路線圖顯示 Starship 最快 2026 年下半年開始發射衛星。消息帶動歐洲衛星競爭者 Eutelsat 大漲 22%。市場預計 SpaceX 路演約 6 月初啟動，最快 6/12 前後掛牌，將是史上最大 IPO。CNBC 並稱 OpenAI 可能最快次日就秘密申報。
+    </li>
+
+    <li>
+      <span class="event-tag tag-macro">財政評級</span>
+      <strong>Moody's 5/16 將美國主權評級從 Aaa 降至 Aa1 — 三大機構全數降評</strong><br>
+      Moody's 週五盤後公布，將美國主權評級下調一級至 Aa1，為繼 S&amp;P（2011 年）、Fitch（2023 年）之後，最後一家從頂級評級降評的大型機構，美國聯邦政府債務正式失去全部三家機構的 AAA 評級。Moody's 指出：過去十多年歷屆政府與國會均未能扭轉財政惡化趨勢；聯邦赤字預計從 2024 年的 GDP 6.4% 膨脹至 2035 年的 9%，屆時債務佔 GDP 比率恐逼近 134%。降評消息於週一（5/18）開盤引爆殖利率急升——10Y 最高衝至 4.60%，30Y 突破 5.00%（逾 2 年新高）——納斯達克期貨盤前一度跌逾 1.4%。財政部長 Bessent 稱其為「落後指標」，白宮亦淡化影響；市場隨後在 AI 財報強勁帶動下反彈收復失地。
+    </li>
+
+  </ul>
+</div>
+
+<!-- US SECTION -->
+<div class="section-header">
+  <span class="section-flag">🇺🇸</span>
+  <div>
+    <div class="section-title">美國　Nvidia 財報震撼；DJIA 創歷史新高；殖利率高企</div>
+    <div class="section-subtitle">整體：先跌後漲，周收小漲；S&P 連續第 8 週上漲</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">指數週報酬</div>
+  <table>
+    <thead>
+      <tr><th>指數</th><th>收盤</th><th>5日報酬</th><th>YTD</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>S&amp;P 500</td><td>7,473</td><td class="chg-up">+0.88%</td><td class="chg-up">+9.2%</td></tr>
+      <tr><td>Nasdaq 100</td><td>29,482</td><td class="chg-up">+1.22%</td><td class="chg-up">+16.8%</td></tr>
+      <tr><td>DJIA</td><td>50,580</td><td class="chg-up">+2.13%</td><td class="chg-up">+5.2%</td></tr>
+      <tr><td>費城半導體 SOX</td><td>12,203</td><td class="chg-up">+5.30%</td><td class="chg-up">+72.3%</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <div class="card-title">每日走勢回顧</div>
+  <div class="daily-grid">
+    <div class="day-card">
+      <div class="day-name">週一</div>
+      <div class="day-date">5/18</div>
+      <p>Moody's 降評衝擊！開盤 Nasdaq 期貨跌 1.4%、30Y 殖利率衝破 5%。現貨開盤後跌幅收窄，S&amp;P 500 小跌 0.07%。科技板塊盤中跌逾 2.3%。Bill Ackman 透露 Pershing Square 大量持有 Microsoft，帶動 MSFT 上揚。Trump 稅改案在眾院委員會審議。</p>
+    </div>
+    <div class="day-card">
+      <div class="day-name">週二</div>
+      <div class="day-date">5/19</div>
+      <p>S&amp;P 500 連跌第三日，因殖利率持續走高（10Y 達 4.51%）、稅改增債疑慮主導。Trump 赴國會山遊說稅改。Ralph Lauren 財報 +10.26%。IBM +6.2%（量子運算獲 $20 億政府補貼）。Applied Digital +16%（AI 園區長期租約）。</p>
+    </div>
+    <div class="day-card">
+      <div class="day-name">週三</div>
+      <div class="day-date">5/20</div>
+      <p>Nvidia 盤後公布 Q1 FY27：營收 $816 億（+85% YoY），EPS $1.87 vs 預期 $1.78，Q2 指引 $450 億（遠超預期 $430 億）。同日 SpaceX 公開 S-1。Jeff Bezos 接受 CNBC 訪問稱「即使是泡沫也有益」。20Y 公債標售慘敗，殖利率升至 5.047%。</p>
+    </div>
+    <div class="day-card">
+      <div class="day-name">週四</div>
+      <div class="day-date">5/21</div>
+      <p>眾院通過稅改法案。Walmart 財報後股跌近 2%（全年 EPS 指引低於預期）。伊朗核濃縮鈾訊號令市場震盪。Ralph Lauren、IBM 繼續強勢。Nvidia 盤後暴漲後有所回落，AI 概念股整體撐住。道瓊盤中突破 50,000 創歷史新高。</p>
+    </div>
+    <div class="day-card">
+      <div class="day-name">週五</div>
+      <div class="day-date">5/22</div>
+      <p>美伊和談消息（後確認誤報）帶動開盤大漲。Dow 漲 294 點，收盤 50,580 創歷史新高。S&amp;P 500 +0.37%，科技 +1.02%、醫療 +1.19% 領漲。Merck +5.64%、Salesforce +2.23%。Warsh 正式就任 Fed 主席。殖利率從高點小幅回落（10Y 4.558%）。</p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">本週重大財報與事件 — 美國</div>
+  <ul class="event-list">
+    <li>
+      <span class="event-tag tag-corp">財報</span>
+      <strong>Walmart（WMT）— 全年指引不如預期，股跌近 2%</strong><br>
+      Q1 FY2027 EPS $0.61（adjusted，vs 預期 $0.58），小幅 beat；但全年調整後 EPS 指引 $2.75–2.85 低於分析師共識 $2.91，淨銷售成長指引 3.5–4.5%，均不及預期。CFO 指出伊朗戰爭推高油價已顯著拖累獲利，消費者雖維持支出但更趨謹慎、尋求價值。電商首次單季實現盈利。消費者行為尚未明顯轉弱，但成本壓力已反映在利潤率上。市場解讀：零售巨頭的警告訊號強化了「高能源成本正在侵蝕企業利潤率」的擔憂。
+    </li>
+    <li>
+      <span class="event-tag tag-corp">財報</span>
+      <strong>Ralph Lauren（RL）+10.26% — 奢侈消費逆勢強勁</strong><br>
+      Q4 FY2026 EPS 與 FY2027 全年指引均大幅超預期，成為本週美股最大正面驚喜之一。顯示高端消費者需求韌性仍強，與 Walmart 的平價消費承壓形成鮮明對比。
+    </li>
+    <li>
+      <span class="event-tag tag-corp">財報</span>
+      <strong>IBM +6.2% — 量子運算獲 $20 億政府補貼</strong><br>
+      美國商務部宣布向量子運算領域提供 $20 億聯邦資金，IBM 為最大受益者，帶動股價大幅跳升。AI 政府採購熱潮持續延伸至量子運算領域。
+    </li>
+    <li>
+      <span class="event-tag tag-corp">AI 半導體族群</span>
+      <strong>Nvidia 效應帶動 AI 晶片供應鏈全面上漲 — AMD、ARM、Intel、Dell、HP 均強</strong><br>
+      Nvidia Q2 指引 $450 億（YoY +97%）確認 AI 算力需求未見峰頂，帶動整個 AI 晶片及基礎設施生態系本週大漲。ARM Holdings（NASDAQ: ARM）是本週最直接的受惠者之一——Nvidia 在法說會中明確提及 Vera CPU 年營收目標達 $200 億，而 Vera CPU 核心基於 ARM 架構授權，直接驗證 ARM 在下一世代 AI 資料中心算力平台中的關鍵地位，帶動 ARM 週漲幅顯著。AMD 受惠於 AI GPU 替代競爭格局改善（MI400 系列前景），延伸漲勢。Intel 在 Nvidia 帶動整體情緒下亦有所回升，儘管自身 AI 加速器出貨仍落後。在伺服器與 AI 基礎設施端，Dell Technologies 與 HP Enterprise 受惠於超大規模客戶採購 AI 伺服器持續高速增長，兩者本週均有 3–5% 以上漲幅，反映「AI 基礎設施建設」主題正從晶片蔓延至系統整合商。費城半導體指數 SOX 本週大漲 +5.30%，YTD 已達 +72.3%。
+    </li>
+  </ul>
+</div>
+
+<!-- NVIDIA DEEP DIVE -->
+<div class="card">
+  <div class="card-title">本週核心財報 — Nvidia（NVDA）Q1 FY2027</div>
+  <table class="earnings-table">
+    <thead>
+      <tr><th>股票</th><th>公司</th><th>結果</th><th>股價反應</th><th>重點摘要</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="ticker">NVDA</div></td>
+        <td><div class="company">Nvidia</div></td>
+        <td><span class="result-badge up">BEAT</span></td>
+        <td><span class="stock-reaction chg-up">盤後 +6%；次日回落 −0.9~1.9%</span></td>
+        <td>
+          Q1 FY2027（截至 4/26）：營收 $816 億（+85% YoY，+20% QoQ），超越共識 $782 億。Non-GAAP EPS $1.87（vs 預期 $1.78）。資料中心（Data Center）$752 億（+92% YoY），Blackwell 架構已完全佔據市場，每家主要超大規模雲端商、雲端供應商與模型開發商均已部署。Non-GAAP 毛利率 75.0%，與前季持平，顯示定價能力穩健。<br><br>
+          <strong>Q2 指引震撼市場：</strong>Q2 FY27 營收指引 $450 億（±2%），遠超共識 $430 億與 Goldman Sachs 估計 $437 億；Q2 Non-GAAP 毛利率指引 75.0%（±50bp）。Jensen Huang 稱「AI 工廠建設是人類史上最大規模基礎設施擴張，正在以驚人速度加速」。<br><br>
+          <strong>股息大幅提升與回購：</strong>季度現金股息從 $0.01 提升至 $0.25（增加 25 倍）。另宣布 $800 億股票回購授權。自由現金流 Q1 達 $486 億。<br><br>
+          <strong>下一代架構：</strong>Vera Rubin 平台預計 FY2027 Q3 開始出貨、Q4 加速量產，客戶包含 AWS、Azure、Google Cloud、Oracle、CoreWeave。Blackwell Ultra（GB300）仍是當前主力，訂單排期仍延伸。<br><br>
+          <strong>股價未大漲的原因：</strong>市場已高度預期，「買方心理線」一直在 $450 億以上；即便大幅 beat，相較於部分 $450–460 億的超樂觀預測，差距有限。歷史顯示 Nvidia 過去五季財報發布後次日股價平均下跌，本次亦走向相似模式。
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="insight-box">
+  <h4>📌 本週核心洞察 — 美國市場</h4>
+  <p>本週市場的核心矛盾是：企業盈利（Nvidia 爆炸性財報）代表的樂觀訊號，vs 主權財政（Moody's 降評 + 稅改增債 + 20Y 標售慘敗）代表的中長期隱患。市場最終以「先跌後漲」的方式達到平衡——債市殖利率居高不下（30Y 破 5%），但科技股由 Nvidia 財報托底，Dow 甚至創下歷史新高。DJIA 連第 8 週上漲（S&amp;P 500 亦然）是這輪多頭行情的重要里程碑，但 30Y 殖利率持續逼近 5% 是長期風險的警示燈。</p>
+</div>
+
+<!-- EUROPE SECTION -->
+<div class="section-header">
+  <span class="section-flag">🇪🇺</span>
+  <div>
+    <div class="section-title">歐洲　Nvidia 效應帶動全面回升；DAX +3.9% 本週最強</div>
+    <div class="section-subtitle">整體：週強勁反彈；科技板塊補漲；德國 Uniper 再私有化</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">指數週報酬</div>
+  <table>
+    <thead>
+      <tr><th>指數</th><th>收盤</th><th>5日報酬</th><th>YTD</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>STOXX 600</td><td>625.12</td><td class="chg-up">+3.00%</td><td class="chg-up">+5.6%</td></tr>
+      <tr><td>DAX 40（德）</td><td>24,889</td><td class="chg-up">+3.92%</td><td class="chg-up">+1.6%</td></tr>
+      <tr><td>CAC 40（法）</td><td>8,116</td><td class="chg-up">+2.05%</td><td class="chg-dn">−0.4%</td></tr>
+      <tr><td>FTSE 100（英）</td><td>10,466</td><td class="chg-up">+2.66%</td><td class="chg-up">+5.4%</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <div class="card-title">本週重點 — 歐洲</div>
+  <ul class="event-list">
+    <li>
+      <span class="event-tag tag-corp">財報/企業</span>
+      <strong>德國 Uniper 擬再私有化 — 政府宣布出售持股</strong><br>
+      德國政府宣布計畫重新私有化能源集團 Uniper，此前政府在 2022 年歐洲能源危機時以 135 億歐元紓困入股。此舉是德國推動國家資本退出、釋放市場活力的重要訊號，亦為長達數年的能源危機應對畫上句點。
+    </li>
+    <li>
+      <span class="event-tag tag-corp">企業</span>
+      <strong>Eutelsat +22% — SpaceX IPO 帶動歐洲衛星股聯動</strong><br>
+      SpaceX 5/20 公開申報 S-1 後，被視為「歐洲版 SpaceX」的 Eutelsat 股價週四大漲 22%，顯示市場對衛星通訊賽道的重估熱情。儘管兩者規模差距懸殊，但 SpaceX IPO 引爆的 Starlink 題材直接輻射至歐洲競爭者。
+    </li>
+    <li>
+      <span class="event-tag tag-geo">地緣政治</span>
+      <strong>G7 峰會 + 伊朗變數 — 伊朗核鈾立場引發週四歐股震盪</strong><br>
+      週四伊朗最高領袖命令「近武器級濃縮鈾不得移往境外」，使和平談判出現重大障礙，STOXX 600 盤中在漲跌之間劇烈震盪後小幅收紅。歐洲股市本週整體表現強勁，但伊朗問題仍是懸在頭頂的地緣風險。
+    </li>
+  </ul>
+</div>
+
+<!-- ASIA SECTION -->
+<div class="section-header">
+  <span class="section-flag">🌏</span>
+  <div>
+    <div class="section-title">亞太　Nvidia 效應帶動全面上漲；韓台領漲；印尼持續崩跌</div>
+    <div class="section-subtitle">整體：除印尼外全面回升；KOSPI +4.7%、SOX +5.3% 最強</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">指數週報酬（資料來源：Bloomberg，截至 2026/05/22 收盤）</div>
+  <table>
+    <thead>
+      <tr><th>指數</th><th>收盤</th><th>5日報酬</th><th>YTD</th></tr>
+    </thead>
+    <tbody>
+      <tr><td colspan="4" class="sub-label">東北亞</td></tr>
+      <tr><td>🇯🇵 TOPIX</td><td>3,892</td><td class="chg-up">+0.74%</td><td class="chg-up">+14.2%</td></tr>
+      <tr><td>🇯🇵 Nikkei 225</td><td>63,339</td><td class="chg-up">+3.14%</td><td class="chg-up">+25.8%</td></tr>
+      <tr><td>🇰🇷 KOSPI</td><td>7,848</td><td class="chg-up">+4.73%</td><td class="chg-up">+86.2%</td></tr>
+      <tr><td>🇹🇼 TAIEX</td><td>42,268</td><td class="chg-up">+2.66%</td><td class="chg-up">+45.9%</td></tr>
+      <tr><td>🇨🇳 滬深 300</td><td>4,845</td><td class="chg-dn">−0.30%</td><td class="chg-up">+4.6%</td></tr>
+      <tr><td>🇨🇳 上証綜指</td><td>4,113</td><td class="chg-dn">−0.54%</td><td class="chg-up">+3.6%</td></tr>
+      <tr><td>🇭🇰 恒生指數</td><td>25,606</td><td class="chg-dn">−1.37%</td><td class="chg-dn">−0.1%</td></tr>
+      <tr><td colspan="4" class="sub-label">印度</td></tr>
+      <tr><td>🇮🇳 Nifty 50</td><td>23,719</td><td class="chg-up">+0.32%</td><td class="chg-dn">−9.2%</td></tr>
+      <tr><td>🇮🇳 Nifty MidSmall 400</td><td>20,388</td><td class="chg-up">+0.84%</td><td class="chg-up">+0.8%</td></tr>
+      <tr><td colspan="4" class="sub-label">東南亞</td></tr>
+      <tr><td>🇸🇬 STI</td><td>5,068</td><td class="chg-up">+1.58%</td><td class="chg-up">+9.1%</td></tr>
+      <tr><td>🇹🇭 SET</td><td>1,539</td><td class="chg-up">+1.37%</td><td class="chg-up">+22.1%</td></tr>
+      <tr><td>🇲🇾 KLCI</td><td>1,713</td><td class="chg-dn">−1.58%</td><td class="chg-up">+1.9%</td></tr>
+      <tr><td>🇮🇩 JCI</td><td>6,162</td><td class="chg-dn">−8.35%</td><td class="chg-dn">−28.7%</td></tr>
+      <tr><td>🇵🇭 PSEi</td><td>5,961</td><td class="chg-dn">−0.26%</td><td class="chg-dn">−1.5%</td></tr>
+      <tr><td>🇻🇳 VN-Index</td><td>1,877</td><td class="chg-dn">−2.31%</td><td class="chg-up">+5.2%</td></tr>
+      <tr><td colspan="4" class="sub-label">大洋洲</td></tr>
+      <tr><td>🇦🇺 ASX 200</td><td>8,657</td><td class="chg-up">+0.30%</td><td class="chg-dn">−0.7%</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:#999;margin-top:8px;font-family:'Helvetica Neue',Arial,sans-serif;">✓ 數據來源：Bloomberg（CHG_PCT_5D），截至 2026/05/22 收盤</p>
+</div>
+
+<div class="card">
+  <div class="card-title">重要事件 &amp; 總結 — 亞洲</div>
+  <ul class="event-list">
+
+    <li>
+      <span class="event-tag tag-corp">🇰🇷🇹🇼 韓台</span>
+      <strong>KOSPI +4.73%、TAIEX +2.66% — Nvidia 財報點燃 AI 半導體全面反彈</strong><br>
+      Nvidia Q1 FY27 財報發布後，AI 供應鏈全線受惠，韓國 KOSPI 本週大漲 4.73%（YTD +86.2%），台灣 TAIEX 上漲 2.66%（YTD +45.9%），費城半導體指數 SOX 本週大漲 5.30%。Nvidia 的 Blackwell 與 Vera Rubin 架構持續拉動對 TSMC 先進製程（CoWoS 先進封裝）、SK Hynix / Samsung HBM3E 以及聯發科 AI 芯片的需求。Q2 指引 $450 億代表 YoY +97%，AI 基礎設施需求仍在加速而非見頂，為亞洲 AI 供應鏈的中期展望提供強力背書。韓國 KOSPI YTD 漲幅已達 86.2%，是今年全球表現最強的主要市場之一。
+    </li>
+
+    <li>
+      <span class="event-tag tag-corp">🇯🇵 日本</span>
+      <strong>Nikkei +3.14%、TOPIX +0.74% — AI 股領漲，但 TOPIX/Nikkei 背離持續</strong><br>
+      Nikkei 225 本週強勁反彈，主要由 AI 相關重量股（SoftBank、Advantest、東京電子）帶動；TOPIX 漲幅則溫和得多，反映成分股更廣泛的大盤並未同步受惠。TOPIX YTD 達 +14.2%，Nikkei 225 YTD 達 +25.8%，兩者差距持續擴大，凸顯日本股市漲勢的高度集中性。日圓約在 157–158 兌美元區間，BOJ 下次會議（6/16–17）是否升息是關鍵觀察點。
+    </li>
+
+    <li>
+      <span class="event-tag tag-corp">🇨🇳🇭🇰 中國 / 香港</span>
+      <strong>A 股小跌、恒生 −1.37% — AI 題材讓位給財政與地緣疑慮</strong><br>
+      本週中港股市未能跟上全球 AI 行情的上漲，恒生指數小幅下跌 1.37%，A 股滬深 300 微跌 0.30%。Moody's 降評引發的「Sell America」情緒部分溢出至新興市場，加上川習峰會效果消退、美中科技管制前景未明，抑制了中資科技股的上漲動能。市場等待中國自身的 AI 投資政策進一步明朗，Alibaba 雲端 +38% 的基本面邏輯雖仍成立，但短期缺乏新催化劑。
+    </li>
+
+    <li>
+      <span class="event-tag tag-geo">🇮🇩 印尼</span>
+      <strong>JCI 本週再跌 −8.35%，YTD 累跌 −28.7% — MSCI 正式除名、印尼盾破紀錄、出口管制</strong><br>
+      印尼本週遭受本年度最慘烈的單週跌幅之一，JCI 週跌 8.35%，5/22 盤中一度觸及 5,976（年內最低），收盤 6,162。多重衝擊同步爆發：<br><br>
+      <strong>MSCI 正式除名（5/12 宣布）：</strong>MSCI 5 月指數審查正式從 Standard Index 除名 6 支印尼成分股（Amman Mineral、Barito Renewables、Chandra Asri、Dian Swastatika、Petrindo Jaya Kreasi、Sumber Alfaria），Small Cap 另除名 13 支，6/1 生效。此舉觸發被動資金強制賣出，印尼首富 Prajogo Pangestu 因旗下三家公司（AMMN、BREN、CUAN）被除名，單日損失約 $18 億。<br><br>
+      <strong>印尼盾（Rupiah）創歷史新低：</strong>5/19 盤中印尼盾跌至 17,733 兌美元（歷史最弱），外匯市場持續承壓，Bank Indonesia 被迫加息（週三升息 50bp 至 5.25%）以穩定匯率。<br><br>
+      <strong>出口管制引爆市場：</strong>Prabowo 政府宣布強制棕櫚油、煤炭、鐵合金等關鍵出口商品須透過單一國有出口商出口，市場視此為「行政干預」訊號，加重資本撤出風險。Q1 經常帳數據顯示石油貿易赤字擴大拖累整體帳戶惡化。<br><br>
+      <strong>MSCI 新興市場地位懸而未決：</strong>6 月 Market Accessibility Review 是官方決定是否降級為「前緣市場（Frontier Market）」的關鍵節點。若正式降級，GS 估計極端情境下被動資金拋售規模可達 $130 億，將是印尼資本市場近年來最大的結構性衝擊。
+    </li>
+
+    <li>
+      <span class="event-tag tag-corp">🇮🇳 印度</span>
+      <strong>Nifty 50 +0.32%，週收平盤 — 能源衝擊引發的景氣放緩跡象浮現</strong><br>
+      印度本週 Nifty 50 幾近持平（+0.32%），MidSmall 400 漲 0.84%，整體表現弱於全球 AI 多頭行情。本週 IT（+2–4%）與房地產相對領漲，FMCG 及 PSU 銀行落後（−0–2%）。FII 本週淨賣出 $4 億（YTD 累計 −$230 億），DII 繼續淨買入 $11 億（YTD +$380 億）支撐市場。<br><br>
+      <strong>能源衝擊下的景氣放緩正在發生：</strong>高盛本週印度 Weekly Kickstart 主題報告指出，4 月景氣數據全面走軟——城鄉消費信心雙雙跌至 5–6 個月低點；乘用車銷售回落；汽油、柴油、LPG 等燃油需求疲軟；瀝青消耗因供應鏈斷鏈與油價急漲而大幅下滑，帶動建築活動降溫；粗鋼產量跌至 1.5 年低點；港口貨運量連續下滑。高盛工業調查也訪談了 10 家印度企業，廠商普遍反映燃料、運費、化工、金屬、塑料及進口零組件成本大幅上漲，部分出現柴油短缺，但整體供應鏈斷料尚未普遍。<br><br>
+      <strong>盈利預估下修仍在進行中：</strong>自 2/27（中東戰爭爆發）以來，分析師已將 MSCI India CY26E EPS 下調約 3%，下修幅度為亞太地區最大，廣度也在持續擴大，以製造業相關的能源、化工、工業、汽車、房地產等類別下修最深。市場共識已將 CY26 EPS 成長率從 16% 下修至 14%；高盛預計未來一至兩季共識將進一步下修至約 8%。歷史上，印度盈利在能源供給衝擊後的 12 個月內通常會被下調 6–13%（中位數 −7%），且下修高峰往往滯後 1–2 季出現，意味著目前只是下修週期的中段。<br><br>
+      <strong>Q4 FY26 財報季接近尾聲，整體符合預期：</strong>以 MSCI India 約 90% 市值的已公布結果計算，Q1 CY26（=Q4 FY26）獲利年增 9%，平均 EPS 正面驚喜 +3%，47% 企業 beat、34% miss，廣度尚可。非金融業營收成長強勁（+13% YoY），但淨利潤率下滑至 8.9%（年減 50bp），成本端壓力開始侵蝕利潤。財報電話會議中討論「投入成本上升」的企業比例已接近 2022 年高峰，供應短缺的提及頻率也持續上升。<br><br>
+    </li>
+
+    <li>
+      <span class="event-tag tag-corp">🇸🇬🇹🇭 東協亮點</span>
+      <strong>新加坡 STI +1.58%、泰國 SET +1.37% — 區域防禦性相對強</strong><br>
+      在印尼拖累東協整體表現的一週，新加坡與泰國仍維持正報酬，顯示其相對防禦性。越南 VN-Index 小跌 −2.31%，馬來西亞 KLCI −1.58%，受印尼市場連帶情緒影響。
+    </li>
+
+  </ul>
+</div>
+
+<!-- OUTLOOK -->
+<div class="section-header">
+  <span class="section-flag">🔭</span>
+  <div>
+    <div class="section-title">下週展望 — May 27–30, 2026（5/26 美國國殤日休市）</div>
+  </div>
+</div>
+
+<div class="outlook-grid">
+  <div class="outlook-card">
+    <h4>🇺🇸 美國</h4>
+    <ul>
+      <li>5/26 Memorial Day 休市，週二開盤</li>
+      <li>SpaceX（SPCX）IPO 路演預計啟動（目標 6/12 掛牌）</li>
+      <li>OpenAI 秘密 IPO 申報動態</li>
+      <li>參院稅改審議進展 — 殖利率走向的最大變數</li>
+      <li>Warsh 新時代首週觀察 — 溝通風格轉變</li>
+      <li>30Y UST 殖利率 5% 是否成常態</li>
+      <li>4 月 PCE 物價指數（5/30）</li>
+      <li>美伊談判最新進展</li>
+    </ul>
+  </div>
+  <div class="outlook-card eu">
+    <h4>🇪🇺 歐洲</h4>
+    <ul>
+      <li>ECB 下次決議：7/24</li>
+      <li>德國 Uniper 私有化進展</li>
+      <li>歐元區 CPI 閃估值（5/30）</li>
+      <li>Moody's 降評對歐元區財政協調的長期含義</li>
+      <li>SpaceX 上市後對 Eutelsat 等歐洲衛星股的持續關注</li>
+    </ul>
+  </div>
+  <div class="outlook-card asia">
+    <h4>🌏 亞太</h4>
+    <ul>
+      <li>印尼 MSCI 6 月 Market Accessibility Review — 新興市場地位最終裁決</li>
+      <li>Bank Indonesia 匯率穩定效果評估</li>
+      <li>BOJ 6/16–17 — 升息路徑再評估</li>
+      <li>SpaceX 上市對 TSMC、SK Hynix 間接影響</li>
+      <li>中國 5 月 PMI（5/31）</li>
+      <li>TAIEX/KOSPI — Nvidia Q2 指引下的 AI 供應鏈持續性</li>
+      <li>印度盈利下修週期仍在中段 — 高盛預估 CY26 EPS 成長率將進一步下修至 ~8%</li>
+      <li>FII 流向 — 持續低配印度，等待能源衝擊影響峰值</li>
+    </ul>
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<footer>
+  Curated by <strong>Irene Shiang</strong> &nbsp;·&nbsp; Generated May 24, 2026 &nbsp;·&nbsp; Sources: Bloomberg, Nvidia SEC 8-K, SpaceX S-1, BLS, Reuters, CNBC, TheStreet, T. Rowe Price, Jakarta Globe, Tempo, Trading Economics
+</footer>
+
+</body>
+</html>
